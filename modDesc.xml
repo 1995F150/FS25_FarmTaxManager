@@ -7,13 +7,13 @@
     <title>$l10n_mod_title</title>
     <description>$l10n_mod_description</description>
 
-    <!-- Mod Icon (shown in Mods & DLC Menu) -->
+    <!-- Mod Icon -->
     <iconFilename>modIcon.dds</iconFilename>
 
-    <!-- Multiplayer support -->
+    <!-- Multiplayer Support -->
     <multiplayer supported="true"/>
 
-    <!-- Category so it shows under Gameplay Mods -->
+    <!-- Category -->
     <category>gameplay</category>
 
     <!-- LUA Script -->
@@ -22,21 +22,17 @@
     </extraSourceFiles>
 
     <!-- Localization -->
-    <l10n filename="l10n/l10n_en.xml"/>
+    <l10n filenamePrefix="l10n"/>
 
     <!-- Branding -->
     <brands>
         <brand name="CriderGPT"/>
     </brands>
 
-    <!-- Web Links (optional: clickable link in ModHub page) -->
-    <webLinks>
-        <webLink title="CriderGPT Official Site" url="https://cridergpt.lovable.app/"/>
-    </webLinks>
-
-    <!-- Store Data Section (this makes it appear in Mods & DLC) -->
+    <!-- Store Data (makes it show up in Mods & DLC) -->
     <storeData>
         <name>$l10n_mod_title</name>
+        <image>modIcon.dds</image>
         <specs>
             <spec name="Author" value="Jessie Crider (CriderGPT)"/>
             <spec name="Version" value="1.0.0.0"/>
@@ -44,4 +40,3 @@
         </specs>
     </storeData>
 </modDesc>
-
