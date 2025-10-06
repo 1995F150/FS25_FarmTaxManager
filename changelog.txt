@@ -1,0 +1,18 @@
+--------------------------------------------------
+Version: 1.1.0.0
+--------------------------------------------------
+- Added Sales Tax (5.2%) for store purchases and product sales.
+- Optimized property and vehicle tax logic for better performance.
+- Improved HUD notifications for clearer tax breakdowns.
+- Confirmed console compatibility for PlayStation and Xbox.
+- Added CriderGPT website link for player feedback and updates.
+- Minor XML and code cleanup for FS25 standards.
+
+--------------------------------------------------
+Version: 1.0.0.0
+--------------------------------------------------
+- Initial release of Farm Tax Manager.
+- Added automatic daily tax system for property and vehicles.
+- HUD-based notifications (no sounds, fully console-safe).
+- Integrated with standard FS25 money system.
+- Included changelog, README, and metadata for ModHub compliance.
