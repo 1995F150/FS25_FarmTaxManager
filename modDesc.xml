@@ -3,39 +3,34 @@
     <author>Jessie Crider (CriderGPT)</author>
     <version>1.0.0.0</version>
 
-    <!-- Proper Title & Description -->
-    <title>FS25 Farm Tax Manager</title>
+    <title>
+        <en>FS25 Farm Tax Manager</en>
+    </title>
+
     <description>
-        Manage your farm like a pro with the Farm Tax Manager. 
-        This mod introduces a dynamic farm tax system based on Virginia’s real agricultural and property tax rates. 
-        Taxes are automatically calculated monthly from your land ownership and income, with HUD notifications. 
-        Built by CriderGPT — visit https://cridergpt.lovable.app/ for more AI-powered tools for FS22 and FS25. 
-        Console-compatible and ModHub-ready.
+        <en>
+            Manage your farm like a pro with the Farm Tax Manager!
+            This mod adds a Virginia-style farm and sales tax system.
+            Property and sales taxes are calculated automatically with HUD notices.
+            Built by CriderGPT — visit https://cridergpt.lovable.app for more AI-powered FS tools.
+            Console-safe and ModHub-ready.
+        </en>
     </description>
 
-    <!-- Mod Icon -->
     <iconFilename>modIcon.dds</iconFilename>
-
-    <!-- Multiplayer Support -->
     <multiplayer supported="true"/>
-
-    <!-- Category -->
     <category>gameplay</category>
 
-    <!-- LUA Script -->
     <extraSourceFiles>
         <sourceFile filename="FarmTaxManager.lua"/>
     </extraSourceFiles>
 
-    <!-- Localization -->
     <l10n filename="l10n_en.xml"/>
 
-    <!-- Branding -->
     <brands>
         <brand name="CriderGPT"/>
     </brands>
 
-    <!-- Store Data (ModHub display info) -->
     <storeData>
         <name>FS25 Farm Tax Manager</name>
         <image>modIcon.dds</image>
