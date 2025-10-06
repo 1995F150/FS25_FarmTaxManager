@@ -13,31 +13,46 @@ jobs:
     steps:
       # 🧱 Checkout repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 🔍 Extract version from modDesc.xml
-      - name: Read Mod Version
-        id: get_version
+      # 🔍 Extract version number safely
+      - name: Read mod version from modDesc.xml
+        id: version
         run: |
-          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" modDesc.xml || echo "unknown")
+          if grep -q "<version>" modDesc.xml; then
+            VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" modDesc.xml)
+          else
+            VERSION="unknown"
+          fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Detected version: $VERSION"
 
-      # 🏗️ Package the mod with version & timestamp
-      - name: Package FS25 Farm Tax Manager Mod
+      # 🏗️ Package mod files
+      - name: Create mod ZIP
         run: |
           mkdir -p build
-          VERSION=${{ steps.get_version.outputs.version }}
-          TIMESTAMP=$(date +%Y-%m-%d_%H-%M)
-          ZIP_NAME="FS25_FarmTaxManager_v${VERSION}_${TIMESTAMP}.zip"
-          echo "Creating build/$ZIP_NAME..."
-          zip -r "build/$ZIP_NAME" . \
-            -x "*.git*" "*.github*" "README.md" "LICENSE"
-          echo "✅ Build complete: build/$ZIP_NAME"
+          VERSION=${{ steps.version.outputs.version }}
+          DATE=$(date +%Y-%m-%d_%H-%M)
+          ZIP_NAME="FS25_FarmTaxManager_v${VERSION}_${DATE}.zip"
+          echo "Packaging $ZIP_NAME..."
+          zip -r "build/$ZIP_NAME" . -x "*.git*" "*.github*" "README.md" "LICENSE"
+          echo "✅ Created build/$ZIP_NAME"
 
-      # 📦 Upload the ZIP as an artifact for easy download
-      - name: Upload Mod ZIP
+      # 📦 Upload ZIP to Actions artifacts
+      - name: Upload built ZIP
         uses: actions/upload-artifact@v3
         with:
-          name: FS25_FarmTaxManager_Latest
+          name: FS25_FarmTaxManager_${{ steps.version.outputs.version }}
           path: build/
+
+      # 💾 (Optional) Auto-commit new ZIP to repo under /releases
+      - name: Commit latest ZIP to releases folder
+        if: success()
+        run: |
+          mkdir -p releases
+          cp build/*.zip releases/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add releases/
+          git commit -m "Auto-build: Added FS25 Farm Tax Manager v${{ steps.version.outputs.version }}"
+          git push
