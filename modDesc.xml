@@ -3,41 +3,45 @@
     <author>Jessie Crider (CriderGPT)</author>
     <version>1.0.0.0</version>
 
-    <title>
-        <en>FS25 Farm Tax Manager</en>
-    </title>
+    <!-- Localized Title & Description -->
+    <title>$l10n_mod_title</title>
+    <description>$l10n_mod_description</description>
 
-    <description>
-        <en>
-            Manage your farm like a pro with the Farm Tax Manager.
-            This mod introduces a dynamic farm tax system based on Virginia’s real agricultural and property tax rates.
-            Taxes are automatically calculated monthly from your land ownership and income, with HUD notifications.
-            Built by CriderGPT — visit https://cridergpt.lovable.app/ to discover more AI-powered tools for FS22 and FS25.
-            Console-compatible and ModHub-ready.
-        </en>
-    </description>
-
+    <!-- Mod Icon (shown in Mods & DLC Menu) -->
     <iconFilename>modIcon.dds</iconFilename>
 
+    <!-- Multiplayer support -->
     <multiplayer supported="true"/>
+
+    <!-- Category so it shows under Gameplay Mods -->
     <category>gameplay</category>
 
+    <!-- LUA Script -->
     <extraSourceFiles>
         <sourceFile filename="FarmTaxManager.lua"/>
     </extraSourceFiles>
 
-    <l10n>
-        <text name="FARMTAX_TITLE">Farm Tax Manager</text>
-        <text name="FARMTAX_TAX_PAID">Property Tax Paid</text>
-        <text name="FARMTAX_BALANCE">Remaining Balance</text>
-        <text name="FARMTAX_NOTICE">Monthly tax assessment complete. Visit cridergpt.lovable.app for more AI tools.</text>
-    </l10n>
+    <!-- Localization -->
+    <l10n filename="l10n/l10n_en.xml"/>
 
+    <!-- Branding -->
     <brands>
         <brand name="CriderGPT"/>
     </brands>
 
+    <!-- Web Links (optional: clickable link in ModHub page) -->
     <webLinks>
         <webLink title="CriderGPT Official Site" url="https://cridergpt.lovable.app/"/>
     </webLinks>
+
+    <!-- Store Data Section (this makes it appear in Mods & DLC) -->
+    <storeData>
+        <name>$l10n_mod_title</name>
+        <specs>
+            <spec name="Author" value="Jessie Crider (CriderGPT)"/>
+            <spec name="Version" value="1.0.0.0"/>
+            <spec name="Category" value="Gameplay"/>
+        </specs>
+    </storeData>
 </modDesc>
+
