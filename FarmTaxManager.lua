@@ -6,14 +6,15 @@
 FarmTaxManager = {}
 local FarmTaxManager_mt = Class(FarmTaxManager)
 
+--- Constructor
 function FarmTaxManager:new(mission, i18n)
     local self = setmetatable({}, FarmTaxManager_mt)
     self.mission = mission
     self.i18n = i18n
-    self.taxIntervalDays = 30         -- property tax every 30 in-game days
-    self.landTaxRate = 12.5           -- per hectare
-    self.vehicleTaxRate = 25.0        -- per vehicle
-    self.salesTaxRate = 0.052         -- 5.2% Virginia-style sales tax
+    self.taxIntervalDays = 30          -- property tax every 30 in-game days
+    self.landTaxRate = 12.5            -- $ per hectare
+    self.vehicleTaxRate = 25.0         -- $ per vehicle
+    self.salesTaxRate = 0.052          -- 5.2% sales tax
     self.lastTaxDay = 0
     return self
 end
@@ -25,7 +26,7 @@ function FarmTaxManager:loadMap(name)
     self.mission:addUpdateable(self)
     g_messageCenter:subscribe(MessageType.DAY_CHANGED, self.onDayChanged, self)
     g_messageCenter:subscribe(MessageType.MONEY_CHANGED, self.onMoneyChanged, self)
-    print("FS25 Farm Tax Manager loaded | v1.1 Console Safe Edition")
+    Logging.info("FS25 Farm Tax Manager loaded | v1.1 Console Safe Edition")
 end
 
 --========================================================--
@@ -39,7 +40,7 @@ function FarmTaxManager:onDayChanged(day)
 end
 
 --========================================================--
--- PROPERTY TAX
+-- PROPERTY TAX CALCULATION
 --========================================================--
 function FarmTaxManager:calculatePropertyTax()
     local farmId = self.mission:getFarmId()
@@ -70,10 +71,9 @@ function FarmTaxManager:calculatePropertyTax()
 end
 
 --========================================================--
--- SALES TAX
+-- SALES TAX HANDLER
 --========================================================--
 function FarmTaxManager:onMoneyChanged(farmId, amount, moneyType, farmName, reason)
-    -- Detect positive sale amounts only
     if amount > 0 and (moneyType == MoneyType.HARVEST_INCOME or moneyType == MoneyType.PRODUCT_SALE) then
         local tax = amount * self.salesTaxRate
         local farm = g_farmManager:getFarmById(farmId)
@@ -88,7 +88,7 @@ end
 -- HUD MESSAGE (Console Safe)
 --========================================================--
 function FarmTaxManager:showHUD(text)
-    if g_currentMission.hud ~= nil then
+    if g_currentMission ~= nil and g_currentMission.hud ~= nil then
         g_currentMission.hud:addSideNotification(text)
     else
         print(text)
