@@ -3,9 +3,15 @@
     <author>Jessie Crider (CriderGPT)</author>
     <version>1.0.0.0</version>
 
-    <!-- Localized Title & Description -->
-    <title>$l10n_mod_title</title>
-    <description>$l10n_mod_description</description>
+    <!-- Proper Title & Description -->
+    <title>FS25 Farm Tax Manager</title>
+    <description>
+        Manage your farm like a pro with the Farm Tax Manager. 
+        This mod introduces a dynamic farm tax system based on Virginia’s real agricultural and property tax rates. 
+        Taxes are automatically calculated monthly from your land ownership and income, with HUD notifications. 
+        Built by CriderGPT — visit https://cridergpt.lovable.app/ for more AI-powered tools for FS22 and FS25. 
+        Console-compatible and ModHub-ready.
+    </description>
 
     <!-- Mod Icon -->
     <iconFilename>modIcon.dds</iconFilename>
@@ -22,16 +28,16 @@
     </extraSourceFiles>
 
     <!-- Localization -->
-    <l10n filenamePrefix="l10n"/>
+    <l10n filename="l10n_en.xml"/>
 
     <!-- Branding -->
     <brands>
         <brand name="CriderGPT"/>
     </brands>
 
-    <!-- Store Data (makes it show up in Mods & DLC) -->
+    <!-- Store Data (ModHub display info) -->
     <storeData>
-        <name>$l10n_mod_title</name>
+        <name>FS25 Farm Tax Manager</name>
         <image>modIcon.dds</image>
         <specs>
             <spec name="Author" value="Jessie Crider (CriderGPT)"/>
@@ -40,3 +46,4 @@
         </specs>
     </storeData>
 </modDesc>
+
