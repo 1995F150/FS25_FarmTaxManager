@@ -1,0 +1,43 @@
+name: Build FS25 Farm Tax Manager Mod
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 🧱 Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 🔍 Extract version from modDesc.xml
+      - name: Read Mod Version
+        id: get_version
+        run: |
+          VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" modDesc.xml || echo "unknown")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: $VERSION"
+
+      # 🏗️ Package the mod with version & timestamp
+      - name: Package FS25 Farm Tax Manager Mod
+        run: |
+          mkdir -p build
+          VERSION=${{ steps.get_version.outputs.version }}
+          TIMESTAMP=$(date +%Y-%m-%d_%H-%M)
+          ZIP_NAME="FS25_FarmTaxManager_v${VERSION}_${TIMESTAMP}.zip"
+          echo "Creating build/$ZIP_NAME..."
+          zip -r "build/$ZIP_NAME" . \
+            -x "*.git*" "*.github*" "README.md" "LICENSE"
+          echo "✅ Build complete: build/$ZIP_NAME"
+
+      # 📦 Upload the ZIP as an artifact for easy download
+      - name: Upload Mod ZIP
+        uses: actions/upload-artifact@v3
+        with:
+          name: FS25_FarmTaxManager_Latest
+          path: build/
