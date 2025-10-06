@@ -1,4 +1,17 @@
 --------------------------------------------------
+Version: 1.2.0.0 | CriderGPT Linked Edition
+--------------------------------------------------
+- Added full integration with CriderGPT Helper / Apollo Core.
+- Now requires FS25_CriderGPTHelper for advanced linking.
+- Farm Tax Manager automatically registers inside Apollo ecosystem.
+- Added brand prefix (CriderGPT│) to all HUD messages for consistency.
+- Added handshake verification with Apollo Core (console-safe).
+- Improved startup validation with mod dependency check.
+- Optimized multiplayer sync when multiple farms are active.
+- Minor code cleanup and improved Logging for ModHub review.
+- Ready for ModHub submission under the CriderGPT Mod Series.
+
+--------------------------------------------------
 Version: 1.1.0.0
 --------------------------------------------------
 - Added Sales Tax (5.2%) for store purchases and product sales.
