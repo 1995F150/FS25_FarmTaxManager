@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<l10n>
+  <!-- English -->
+  <text name="mod_title">FS25 Farm Tax Manager</text>
+  <text name="mod_description">Automatically applies Virginia-style farm and sales taxes to your in-game income and product sales.</text>
+  <text name="hud_tax_notice">💰 Tax Notice: Your sale was taxed at %d%%.</text>
+  <text name="hud_farm_tax_paid">🏛️ Farm tax of $%d has been paid to the county.</text>
+  <text name="hud_sales_tax_paid">🧾 Sales tax of $%d has been deducted from your earnings.</text>
+  <text name="hud_tax_summary">📊 Total taxes paid this session: $%d</text>
+
+  <!-- French -->
+  <text name="mod_description_fr">Applique automatiquement les taxes agricoles et de vente de style Virginie à vos revenus en jeu.</text>
+  <text name="hud_tax_notice_fr">💰 Avis d’impôt : votre vente a été taxée à %d%%.</text>
+  <text name="hud_farm_tax_paid_fr">🏛️ Taxe agricole de $%d payée au comté.</text>
+  <text name="hud_sales_tax_paid_fr">🧾 Taxe de vente de $%d déduite de vos gains.</text>
+  <text name="hud_tax_summary_fr">📊 Total des taxes payées pendant cette session : $%d</text>
+
+  <!-- German -->
+  <text name="mod_description_de">Wendet automatisch landwirtschaftliche und Verkaufssteuern nach Virginia-Vorbild auf Ihre Einnahmen an.</text>
+  <text name="hud_tax_notice_de">💰 Steuerhinweis: Ihr Verkauf wurde mit %d%% besteuert.</text>
+  <text name="hud_farm_tax_paid_de">🏛️ Landwirtschaftssteuer von $%d an den Bezirk gezahlt.</text>
+  <text name="hud_sales_tax_paid_de">🧾 Verkaufssteuer von $%d wurde von Ihren Einnahmen abgezogen.</text>
+  <text name="hud_tax_summary_de">📊 Insgesamt gezahlte Steuern in dieser Sitzung: $%d</text>
+
+  <!-- Spanish -->
+  <text name="mod_description_es">Aplica automáticamente impuestos agrícolas y de ventas al estilo Virginia a tus ingresos en el juego.</text>
+  <text name="hud_tax_notice_es">💰 Aviso de impuesto: tu venta fue gravada con %d%%.</text>
+  <text name="hud_farm_tax_paid_es">🏛️ Impuesto agrícola de $%d pagado al condado.</text>
+  <text name="hud_sales_tax_paid_es">🧾 Impuesto de ventas de $%d deducido de tus ganancias.</text>
+  <text name="hud_tax_summary_es">📊 Impuestos totales pagados en esta sesión: $%d</text>
+</l10n>
