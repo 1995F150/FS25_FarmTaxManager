@@ -1,10 +1,23 @@
 --========================================================--
 -- FS25 Farm Tax Manager | by Jessie Crider (CriderGPT)
--- Version: 1.1.0.0 | Console Safe | Virginia Tax Simulation
+-- Version: 1.2.0.0 | CriderGPT Linked Edition | Console Safe
 --========================================================--
 
 FarmTaxManager = {}
 local FarmTaxManager_mt = Class(FarmTaxManager)
+
+--========================================================--
+-- REQUIRE: CriderGPT Helper / Apollo Core
+--========================================================--
+if g_modIsLoaded == nil or g_modIsLoaded["FS25_CriderGPTHelper"] == nil then
+    Logging.error("❌ CriderGPT Helper is required for Farm Tax Manager to function. Please enable FS25_CriderGPTHelper.")
+    return
+end
+
+-- Optional handshake to Apollo Core
+if CriderGPTApollo ~= nil then
+    CriderGPTApollo:registerAddon("Farm Tax Manager")
+end
 
 --- Constructor
 function FarmTaxManager:new(mission, i18n)
@@ -26,7 +39,11 @@ function FarmTaxManager:loadMap(name)
     self.mission:addUpdateable(self)
     g_messageCenter:subscribe(MessageType.DAY_CHANGED, self.onDayChanged, self)
     g_messageCenter:subscribe(MessageType.MONEY_CHANGED, self.onMoneyChanged, self)
-    Logging.info("FS25 Farm Tax Manager loaded | v1.1 Console Safe Edition")
+    Logging.info("[CriderGPT│FarmTaxManager] v1.2 Loaded | Linked to Apollo Core")
+
+    if CriderGPTHelper ~= nil then
+        CriderGPTHelper:showNotification("🔗 Farm Tax Manager linked to CriderGPT Apollo Core.")
+    end
 end
 
 --========================================================--
@@ -64,9 +81,9 @@ function FarmTaxManager:calculatePropertyTax()
     local totalTax = (totalArea * self.landTaxRate) + (vehicleCount * self.vehicleTaxRate)
     if farm:getBalance() >= totalTax then
         farm:addMoney(-totalTax, "Property Tax", MoneyType.OTHER)
-        self:showHUD(string.format("💵 Property Tax Paid: $%.2f", totalTax))
+        self:showHUD(string.format("💵 CriderGPT│Property Tax Paid: $%.2f", totalTax))
     else
-        self:showHUD("⚠️ Insufficient funds for property tax!")
+        self:showHUD("⚠️ CriderGPT│Insufficient funds for property tax!")
     end
 end
 
@@ -79,7 +96,7 @@ function FarmTaxManager:onMoneyChanged(farmId, amount, moneyType, farmName, reas
         local farm = g_farmManager:getFarmById(farmId)
         if farm ~= nil then
             farm:addMoney(-tax, "Sales Tax", MoneyType.OTHER)
-            self:showHUD(string.format("🧾 Sales Tax (%.1f%%): -$%.2f", self.salesTaxRate * 100, tax))
+            self:showHUD(string.format("🧾 CriderGPT│Sales Tax (%.1f%%): -$%.2f", self.salesTaxRate * 100, tax))
         end
     end
 end
@@ -95,4 +112,7 @@ function FarmTaxManager:showHUD(text)
     end
 end
 
+--========================================================--
+-- REGISTER EVENT LISTENER
+--========================================================--
 addModEventListener(FarmTaxManager:new(g_currentMission, g_i18n))
